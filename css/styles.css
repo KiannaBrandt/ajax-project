@@ -1,0 +1,17 @@
+body {
+  font-family: 'PT Sans', sans-serif;
+  background-color: rgb(153, 193, 185);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Zilla Slab', sans-serif;
+}
+
+i {
+  font-size: 2em;
+  padding: 1em;
+}
