@@ -15,3 +15,29 @@ i {
   font-size: 2em;
   padding: 1em;
 }
+
+.box {
+  background-color: white;
+  width: 85%;
+  height: 100%;
+  margin: 3em auto;
+  border-radius: 1em;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#stock-search {
+  width: 50%;
+  border-radius: 1em;
+  margin: 1em;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
+td {
+  padding: 0.5em 1em;
+}
