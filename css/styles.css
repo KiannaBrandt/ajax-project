@@ -11,14 +11,17 @@ header {
   font-family: 'Zilla Slab', sans-serif;
 }
 
+h1 {
+  padding: 0 1em;
+}
+
 i {
   font-size: 2em;
-  padding: 0 1em;
 }
 
 .box {
   background-color: white;
-  width: 88%;
+  width: 89%;
   height: 100%;
   margin: 3em auto;
   border-radius: 1em;
@@ -29,9 +32,11 @@ i {
 }
 
 #stock-search {
-  width: 50%;
+  width: 15em;
+  height: 2.5em;
   border-radius: 1em;
   margin: 2em;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 th {
@@ -41,4 +46,10 @@ th {
 
 td {
   padding: 0.5em 1em;
+}
+
+button {
+  background-color: white;
+  border-style: none;
+  cursor: pointer;
 }
