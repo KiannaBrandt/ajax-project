@@ -13,12 +13,12 @@ header {
 
 i {
   font-size: 2em;
-  padding: 1em;
+  padding: 0 1em;
 }
 
 .box {
   background-color: white;
-  width: 85%;
+  width: 88%;
   height: 100%;
   margin: 3em auto;
   border-radius: 1em;
@@ -31,11 +31,12 @@ i {
 #stock-search {
   width: 50%;
   border-radius: 1em;
-  margin: 1em;
+  margin: 2em;
 }
 
 th {
   border-bottom: 1px solid black;
+  padding: 1em;
 }
 
 td {
