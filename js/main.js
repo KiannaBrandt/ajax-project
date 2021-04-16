@@ -1,4 +1,5 @@
 var $tableLast = document.querySelectorAll('.last');
+var $form = document.querySelector('#form')
 
 function getLastPrice() {
   var xhr = new XMLHttpRequest();
@@ -13,3 +14,9 @@ function getLastPrice() {
 }
 
 getLastPrice();
+
+$form.addEventListener('submit', function() {
+  event.preventDefault();
+  stocks.push($form.elements[0].value);
+  $form.reset()
+});
