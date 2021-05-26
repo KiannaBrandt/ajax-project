@@ -39,6 +39,10 @@ i {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.stocks {
+  display: flex;
+}
+
 th {
   border-bottom: 1px solid black;
   padding: 1em;
