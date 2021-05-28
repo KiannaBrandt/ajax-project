@@ -20,7 +20,7 @@ getLastPrice();
 
 function getStockInfo() {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://sandbox.tradier.com/v1/markets/search?q=' + stocks[stocks.length - 1]);
+  xhr.open('GET', 'https://sandbox.tradier.com/v1/markets/search?q=' + stocks[stocks.length - 1].replace(' ', '%20'));
   xhr.setRequestHeader('Authorization', 'Bearer GaAaHyfRiHqr4OvhZBdHrkhg4Aq4');
   xhr.setRequestHeader('Accept', 'application/json');
   xhr.responseType = 'json';
