@@ -2,7 +2,7 @@ var $tableLast = document.querySelectorAll('.last');
 var $tableTitle = document.querySelector('.title');
 var $tableData = document.querySelectorAll('td');
 var $a = document.querySelectorAll('a');
-
+var $h1 = document.querySelector('h1')
 var $form = document.querySelector('#form');
 
 function getLastPrice() {
@@ -17,7 +17,49 @@ function getLastPrice() {
   xhr.send();
 };
 
+function getLBStockNews() {
+  var lb = 'L%20Brands'
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', `https://newsapi.org/v2/everything?q=${lb}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    $a[0].textContent = xhr.response.articles[0].title;
+    $a[0].href = xhr.response.articles[0].url
+    $a[0].target = `"_blank"`
+  });
+  xhr.send();
+};
+
+function getMROStockNews() {
+  var mro = 'Marathon%20Oil'
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', `https://newsapi.org/v2/everything?q=${mro}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    $a[1].textContent = xhr.response.articles[0].title;
+    $a[1].href = xhr.response.articles[0].url
+    $a[1].target = `"_blank"`
+  });
+  xhr.send();
+};
+
+function getAMATStockNews() {
+  var amat = 'Applied%20Materials%20Inc'
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', `https://newsapi.org/v2/everything?q=${amat}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    $a[2].textContent = xhr.response.articles[0].title;
+    $a[2].href = xhr.response.articles[0].url
+    $a[2].target = `"_blank"`
+  });
+  xhr.send();
+};
+
 getLastPrice();
+getLBStockNews();
+getMROStockNews();
+getAMATStockNews();
 
 function getStockInfo() {
   var xhr = new XMLHttpRequest();
@@ -48,10 +90,10 @@ function getStockInfo() {
     xhr.open('GET', `https://newsapi.org/v2/everything?q=${stockName}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
-      console.log(xhr.response)
       for (var i = 0; i < $a.length; i++) {
         $a[i].textContent = xhr.response.articles[i].title;
-        $a[i].href = xhr.response.articles[i].url
+        $a[i].href = xhr.response.articles[i].url;
+        $a[i].target = `"_blank"`
       };
     });
     xhr.send();
@@ -69,3 +111,7 @@ $form.addEventListener('submit', function () {
   };
  getStockInfo();
 });
+
+$h1.addEventListener('click', function () {
+  location.reload();
+})
