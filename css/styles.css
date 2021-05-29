@@ -41,17 +41,21 @@ i {
 }
 
 table {
-  padding: 2em;
+  padding: 1em;
 }
 
 tr, td {
   padding: 1em;
 }
 
-.news {
+.stocks, .news {
   align-items: center;
   flex-direction: column;
-  padding: 1em;
+}
+
+a {
+  padding: 1em 1em;
+  color:rgb(153, 193, 185);
 }
 
 button {

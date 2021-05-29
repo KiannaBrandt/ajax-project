@@ -10,4 +10,7 @@
   .info {
   display: flex;
   }
+  .news, .stocks {
+    width: 700px;
+  }
 }

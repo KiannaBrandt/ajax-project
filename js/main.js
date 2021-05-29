@@ -1,6 +1,7 @@
 var $tableLast = document.querySelectorAll('.last');
 var $tableTitle = document.querySelector('.title');
-var $tableData = document.querySelectorAll('td')
+var $tableData = document.querySelectorAll('td');
+var $a = document.querySelectorAll('a');
 
 var $form = document.querySelector('#form');
 
@@ -20,7 +21,8 @@ getLastPrice();
 
 function getStockInfo() {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://sandbox.tradier.com/v1/markets/search?q=' + stocks[stocks.length - 1].replace(' ', '%20'));
+  var stockName = stocks[stocks.length - 1].replace(' ', '%20')
+  xhr.open('GET', 'https://sandbox.tradier.com/v1/markets/search?q=' + stockName);
   xhr.setRequestHeader('Authorization', 'Bearer GaAaHyfRiHqr4OvhZBdHrkhg4Aq4');
   xhr.setRequestHeader('Accept', 'application/json');
   xhr.responseType = 'json';
@@ -38,6 +40,19 @@ function getStockInfo() {
     xhr.addEventListener('load', function () {
       $tableData[6].textContent = xhr.response.quotes.quote.change_percentage;
       $tableData[7].textContent = xhr.response.quotes.quote.last;
+    });
+    xhr.send();
+  };
+  xhr.onload = function getStockNews() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://newsapi.org/v2/everything?q=${stockName}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', function () {
+      console.log(xhr.response)
+      for (var i = 0; i < $a.length; i++) {
+        $a[i].textContent = xhr.response.articles[i].title;
+        $a[i].href = xhr.response.articles[i].url
+      };
     });
     xhr.send();
   };
