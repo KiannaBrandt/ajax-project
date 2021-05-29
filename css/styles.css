@@ -53,6 +53,10 @@ tr, td {
   flex-direction: column;
 }
 
+p {
+  font-weight: bold;
+}
+
 a {
   padding: 1em 2em;
   color:rgb(153, 193, 185);
