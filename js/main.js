@@ -4,8 +4,8 @@ var $table = document.querySelector('table');
 var $tableLast = document.querySelectorAll('.last');
 var $tableTitle = document.querySelector('.title');
 var $tableData = document.querySelectorAll('td');
-var $p = document.querySelector('p');
-var $a = document.querySelectorAll('a');
+var $error = document.querySelector('.error');
+var $newsLink = document.querySelectorAll('.newsLink');
 
 function getLastPrice() {
   var xhr = new XMLHttpRequest();
@@ -25,9 +25,9 @@ function getLBStockNews() {
   xhr.open('GET', `https://newsapi.org/v2/everything?q=${lb}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    $a[0].textContent = xhr.response.articles[0].title;
-    $a[0].href = xhr.response.articles[0].url;
-    $a[0].target = `"_blank"`;
+    $newsLink[0].textContent = xhr.response.articles[0].title;
+    $newsLink[0].href = xhr.response.articles[0].url;
+    $newsLink[0].target = `"_blank"`;
   });
   xhr.send();
 };
@@ -38,9 +38,9 @@ function getMROStockNews() {
   xhr.open('GET', `https://newsapi.org/v2/everything?q=${mro}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    $a[1].textContent = xhr.response.articles[0].title;
-    $a[1].href = xhr.response.articles[0].url;
-    $a[1].target = `"_blank"`;
+    $newsLink[1].textContent = xhr.response.articles[0].title;
+    $newsLink[1].href = xhr.response.articles[0].url;
+    $newsLink[1].target = `"_blank"`;
   });
   xhr.send();
 };
@@ -51,9 +51,9 @@ function getAMATStockNews() {
   xhr.open('GET', `https://newsapi.org/v2/everything?q=${amat}&apiKey=5beb1cbe866848bb98531afa92899fb0`);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    $a[2].textContent = xhr.response.articles[0].title;
-    $a[2].href = xhr.response.articles[0].url;
-    $a[2].target = `"_blank"`;
+    $newsLink[2].textContent = xhr.response.articles[0].title;
+    $newsLink[2].href = xhr.response.articles[0].url;
+    $newsLink[2].target = `"_blank"`;
   });
   xhr.send();
 };
@@ -73,11 +73,11 @@ function getStockInfo() {
   xhr.addEventListener('load', function () {
     if (xhr.response.securities === null) {
       $table.className = "hide";
-      $p.className = "";
-      $p.textContent = "Error: cannot find the searched stock."
+      $error.className = "";
+      $error.textContent = "Error: cannot find the searched stock."
     } else {
       $table.className = "";
-      $p.className = "hide";
+      $error.className = "hide";
       $tableData[4].textContent = xhr.response.securities.security.symbol;
       $tableData[5].textContent = xhr.response.securities.security.description;
       if (xhr.response.securities.security.symbol === undefined) {
@@ -105,14 +105,14 @@ function getStockInfo() {
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
       if (xhr.response.articles[4] === undefined) {
-        for (var i = 0; i < $a.length; i++) {
-          $a[i].textContent = '';
+        for (var i = 0; i < $newsLink.length; i++) {
+          $newsLink[i].textContent = '';
         };
       } else {
-        for (var i = 0; i < $a.length; i++) {
-          $a[i].textContent = xhr.response.articles[i].title;
-          $a[i].href = xhr.response.articles[i].url;
-          $a[i].target = `"_blank"`;
+        for (var i = 0; i < $newsLink.length; i++) {
+          $newsLink[i].textContent = xhr.response.articles[i].title;
+          $newsLink[i].href = xhr.response.articles[i].url;
+          $newsLink[i].target = `"_blank"`;
         };
       }
     });
